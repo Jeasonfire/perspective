@@ -4,41 +4,55 @@ using System.Collections;
 public class PerspectiveController : MonoBehaviour {
     public const int PERSPECTIVE_2D = 0;
     public const int PERSPECTIVE_3D = 1;
-    public const int INITIAL_PERSPECTIVE = PERSPECTIVE_2D;
-    public static int CURRENT_PERSPECTIVE = INITIAL_PERSPECTIVE;
+    public const int TRANSITION = 2;
+    public static int CURRENT_PERSPECTIVE = PERSPECTIVE_2D;
 
     public PlayerController player;
     public Camera perspectiveCamera;
     public Transform fpsTransform;
     public Transform platformerTransform;
-
-    private bool lastOrtho = false;
+    public MeshRenderer blinder;
+    public float transitionLength;
+   
+    private float transitionStartTime = 0;
 
     void Start () {
-        perspectiveCamera.orthographic = lastOrtho = INITIAL_PERSPECTIVE == PERSPECTIVE_2D;
+        perspectiveCamera.orthographic = CURRENT_PERSPECTIVE == PERSPECTIVE_2D;
+        blinder.material.color = new Color(blinder.material.color.r, blinder.material.color.g, blinder.material.color.b, 0);
+        transitionStartTime = Time.fixedTime - transitionLength;
         UpdateCamera();
     }
 
     void Update () {
-        if (lastOrtho != perspectiveCamera.orthographic) {
+        float transitionTime = (Time.fixedTime - transitionStartTime) / transitionLength;
+        if (transitionTime < 1.0) {
+            blinder.material.color = new Color(blinder.material.color.r, blinder.material.color.g, blinder.material.color.b, transitionTime);
+        } else if (CURRENT_PERSPECTIVE == TRANSITION) {
+            perspectiveCamera.orthographic = !perspectiveCamera.orthographic;
             UpdateCamera();
+            blinder.material.color = new Color(blinder.material.color.r, blinder.material.color.g, blinder.material.color.b, 0);
         }
-        lastOrtho = perspectiveCamera.orthographic;
     }
 
     void UpdateCamera () {
         if (perspectiveCamera.orthographic) {
+            CURRENT_PERSPECTIVE = PERSPECTIVE_2D;
             perspectiveCamera.transform.position = platformerTransform.position;
-            perspectiveCamera.transform.localEulerAngles = new Vector3(0, 0, 0);
+            perspectiveCamera.transform.eulerAngles = platformerTransform.eulerAngles;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         } else {
+            CURRENT_PERSPECTIVE = PERSPECTIVE_3D;
             perspectiveCamera.transform.position = fpsTransform.position;
-            Vector3 newRotation = perspectiveCamera.transform.localEulerAngles;
-            newRotation.y += player.character.velocity.x < 0 ? -90 : 90;
-            perspectiveCamera.transform.localEulerAngles = newRotation;
+            perspectiveCamera.transform.eulerAngles = fpsTransform.eulerAngles;
+            perspectiveCamera.transform.localEulerAngles = new Vector3(0, player.direction < 0 ? -90 : 90, 0);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
 	public void ChangeState () {
-        perspectiveCamera.orthographic = !perspectiveCamera.orthographic;
+        CURRENT_PERSPECTIVE = TRANSITION;
+        transitionStartTime = Time.fixedTime;
     }
 }
