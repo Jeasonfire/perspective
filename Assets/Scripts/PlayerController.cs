@@ -5,16 +5,16 @@ public class PlayerController : MonoBehaviour {
     public CharacterController character;
     public Transform eye;
     public float movementSpeed;
+    public float jumpForce;
 
     private float currentFallingSpeed = 0;
 
     void Start () {
-
 	}
 
 	void Update () {
         Vector3 movement = new Vector3();
-        Vector3 rotation = new Vector3();
+        Vector3 rotation = eye.localEulerAngles;
         switch (PerspectiveController.CURRENT_PERSPECTIVE) {
             case PerspectiveController.PERSPECTIVE_2D:
                 movement.x = Input.GetAxis("Horizontal");
@@ -22,15 +22,27 @@ public class PlayerController : MonoBehaviour {
             case PerspectiveController.PERSPECTIVE_3D:
                 movement.x = Input.GetAxis("Horizontal");
                 movement.z = Input.GetAxis("Vertical");
-                movement = eye.TransformDirection(movement).normalized;
+                movement = eye.TransformDirection(movement);
+                movement.y = 0;
+                movement.Normalize();
+
+                rotation.y += Input.GetAxis("Mouse X") * Options.MOUSE_SENSITIVITY.x;
+                rotation.x -= Input.GetAxis("Mouse Y") * Options.MOUSE_SENSITIVITY.y;
+                if (rotation.x > 180) {
+                    rotation.x -= 360;
+                }
+                rotation.x = Mathf.Clamp(rotation.x, -90, 90);
                 break;
         }
         if (!character.isGrounded) {
-            this.currentFallingSpeed += Physics.gravity.y * Time.deltaTime;
+            currentFallingSpeed += Physics.gravity.y * Time.deltaTime;
         } else {
-            this.currentFallingSpeed = 0;
+            currentFallingSpeed = 0;
+            if (Input.GetButton("Jump")) {
+                currentFallingSpeed = jumpForce;
+            }
         }
-        character.Move((movement * this.movementSpeed + new Vector3(0, this.currentFallingSpeed, 0)) * Time.deltaTime);
-        this.eye.localEulerAngles = this.eye.localEulerAngles + rotation;
+        character.Move((movement * movementSpeed + new Vector3(0, currentFallingSpeed, 0)) * Time.deltaTime);
+        eye.localEulerAngles = rotation;
     }
 }
