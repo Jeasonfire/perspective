@@ -21,6 +21,8 @@ public class Button : MonoBehaviour {
     private bool clicked = false;
 
     void Start () {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if (interactingCamera == null) {
             interactingCamera = Camera.main;
         }

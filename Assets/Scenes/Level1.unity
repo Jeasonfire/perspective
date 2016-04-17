@@ -1013,6 +1013,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11451046, guid: fed701f4976f210488be4149d669760c, type: 2}
+      propertyPath: nextLevelName
+      value: Level2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed701f4976f210488be4149d669760c, type: 2}
   m_IsPrefabParent: 0

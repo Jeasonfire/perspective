@@ -230,13 +230,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10270328, guid: bbed9d5fd073c2e43b933071b3a1dcfb, type: 2}
       propertyPath: m_Text
-      value: '
-
-'
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 469896, guid: bbed9d5fd073c2e43b933071b3a1dcfb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418372, guid: bbed9d5fd073c2e43b933071b3a1dcfb, type: 2}
+      propertyPath: loadableScene
+      value: Level3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbed9d5fd073c2e43b933071b3a1dcfb, type: 2}
