@@ -25,7 +25,7 @@ public class SwitchController : MonoBehaviour {
     void Update () {
         Vector2 camPos = interactingCamera.transform.position;
         if (PerspectiveController.CURRENT_PERSPECTIVE == PerspectiveController.PERSPECTIVE_2D) {
-            camPos.y -= 1.65f;
+            camPos.y -= GameObject.Find("2D Camera Transform").transform.localPosition.y;
         }
         Vector2 ctrlPos = transform.position;
         float distance = (camPos - ctrlPos).magnitude;

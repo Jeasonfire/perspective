@@ -4,6 +4,8 @@ using System.Collections;
 public class Door : Interaction {
     public Animator animator;
 
+    private bool open = false;
+
     public override void Interact (bool switchedOn) {
         if (switchedOn) {
             Open();
@@ -14,9 +16,15 @@ public class Door : Interaction {
 
     public void Open () {
         animator.Play("DoorOpen");
+        open = true;
     }
 
     public void Close() {
         animator.Play("DoorClose");
+        open = false;
+    }
+
+    public bool IsOpen () {
+        return open;
     }
 }
