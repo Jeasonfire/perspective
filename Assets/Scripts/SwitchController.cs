@@ -2,24 +2,30 @@
 using System.Collections;
 
 public class SwitchController : MonoBehaviour {
-    public Transform lever;
+    public Animator animator;
     public GameObject indicators;
     public Camera interactingCamera;
     public float interactionDistance;
     public bool switchedOn;
     public Interaction[] interactors;
-
-    private float originalZ;
+    
     private bool interacted = false;
+    private bool animatedOn;
 
     void Start () {
         if (interactingCamera == null) {
             interactingCamera = Camera.main;
         }
-        if (lever != null) {
-            originalZ = lever.localEulerAngles.z;
+        animatedOn = !switchedOn;
+        float originalSpeed = 0;
+        if (animator != null) {
+            originalSpeed = animator.speed;
+            animator.speed = 1000 * originalSpeed;
         }
         UpdateGraphics();
+        if (animator != null) {
+            animator.speed = originalSpeed;
+        }
     }
 
     void Update () {
@@ -50,8 +56,13 @@ public class SwitchController : MonoBehaviour {
                 renderer.enabled = switchedOn;
             }
         }
-        if (lever != null) {
-            lever.localEulerAngles = new Vector3(lever.localEulerAngles.x, lever.localEulerAngles.y, originalZ + 45f * (switchedOn ? 1 : -1));
+        if (animator != null && animatedOn != switchedOn) {
+            animatedOn = switchedOn;
+            if (animatedOn) {
+                animator.Play("Open");
+            } else {
+                animator.Play("Close");
+            }
         }
     }
 

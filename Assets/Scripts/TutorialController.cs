@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TutorialController : MonoBehaviour {
     public enum TutorialChapter {
-        Misc, Movement, Jumping, Perspective, Mouselook, Finish
+        Misc, Movement, Jumping, Perspective, Mouselook, Finish, Switch
     }
 
     public TextMesh text;
@@ -59,6 +59,11 @@ public class TutorialController : MonoBehaviour {
                     break;
                 case TutorialChapter.Finish:
                     if ((GameObject.Find("Level Advancer Door").GetComponent<Door>().IsOpen())) {
+                        Done();
+                    }
+                    break;
+                case TutorialChapter.Switch:
+                    if ((GameObject.Find("Tutorial Door").GetComponent<Door>().IsOpen())) {
                         Done();
                     }
                     break;

@@ -262,23 +262,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487032, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100038, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
-      propertyPath: m_Name
-      value: 3D Camera Transform
-      objectReference: {fileID: 0}
-    - target: {fileID: 115392, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
-      propertyPath: m_Name
-      value: 2D Camera Transform
-      objectReference: {fileID: 0}
-    - target: {fileID: 498752, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 498752, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 6.09
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
@@ -544,7 +528,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 3, z: 4}
-  m_Center: {x: 1.5, y: -0.28, z: -2}
+  m_Center: {x: -3.25, y: -0.28, z: -2}
 --- !u!1 &435303190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1430,7 @@ Transform:
   - {fileID: 392875263}
   - {fileID: 1857621411}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1172834484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1543,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466116, guid: fed701f4976f210488be4149d669760c, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11451046, guid: fed701f4976f210488be4149d669760c, type: 2}
       propertyPath: nextLevelName
@@ -1878,7 +1862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11442986, guid: 7045a5cd7c5f225469cac7ee04fa8e77, type: 2}
       propertyPath: fadeTime
-      value: 1.5
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7045a5cd7c5f225469cac7ee04fa8e77, type: 2}

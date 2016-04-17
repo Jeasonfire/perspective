@@ -17,7 +17,7 @@ public class PerspectiveController : MonoBehaviour {
     private float transitionStartTime = 0;
 
     void Start () {
-        perspectiveCamera.orthographic = CURRENT_PERSPECTIVE == PERSPECTIVE_2D;
+        perspectiveCamera.orthographic = true;
         blinder.material.color = new Color(blinder.material.color.r, blinder.material.color.g, blinder.material.color.b, 0);
         transitionStartTime = Time.fixedTime - transitionLength;
         UpdateCamera();
