@@ -11,10 +11,7 @@ public class PlayerController : MonoBehaviour {
 
     private float currentFallingSpeed = 0;
 
-    void Start () {
-	}
-
-	void Update () {
+    void Update () {
         /* Get & apply perspective input */
         if (Input.GetButton("Change Perspective") && PerspectiveController.CURRENT_PERSPECTIVE != PerspectiveController.TRANSITION) {
             perspective.ChangeState();

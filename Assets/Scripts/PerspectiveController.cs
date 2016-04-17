@@ -45,13 +45,12 @@ public class PerspectiveController : MonoBehaviour {
             CURRENT_PERSPECTIVE = PERSPECTIVE_3D;
             perspectiveCamera.transform.position = fpsTransform.position;
             perspectiveCamera.transform.eulerAngles = fpsTransform.eulerAngles;
-            perspectiveCamera.transform.localEulerAngles = new Vector3(0, player.direction < 0 ? -90 : 90, 0);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
     }
 
-	public void ChangeState () {
+    public void ChangeState () {
         CURRENT_PERSPECTIVE = TRANSITION;
         transitionStartTime = Time.fixedTime;
     }
