@@ -5,7 +5,6 @@ public class Door : Interaction {
     public Animator animator;
 
     public override void Interact (bool switchedOn) {
-        Debug.Log("Interacted!");
         if (switchedOn) {
             Open();
         } else {

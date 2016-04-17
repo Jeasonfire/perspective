@@ -7,8 +7,7 @@ public class SwitchController : MonoBehaviour {
     public Camera interactingCamera;
     public float interactionDistance;
     public bool switchedOn;
-    [SerializeField]
-    public Interaction interactor;
+    public Interaction[] interactors;
 
     private float originalZ;
     private bool interacted = false;
@@ -35,8 +34,7 @@ public class SwitchController : MonoBehaviour {
                 interacted = true;
                 switchedOn = !switchedOn;
                 UpdateGraphics();
-                Debug.Log("Switched on: " + switchedOn);
-                if (interactor != null) {
+                foreach (Interaction interactor in interactors) {
                     interactor.Interact(switchedOn);
                 }
             }
