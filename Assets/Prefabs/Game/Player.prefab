@@ -78,6 +78,8 @@ GameObject:
   - 20: {fileID: 2038194}
   - 92: {fileID: 9253680}
   - 124: {fileID: 12434964}
+  - 114: {fileID: 11414326}
+  - 114: {fileID: 11490238}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -157,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 443270}
@@ -384,6 +386,26 @@ MonoBehaviour:
   platformerTransform: {fileID: 427512}
   blinder: {fileID: 2389190}
   transitionLength: 0.3
+--- !u!114 &11414326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Radius: 0.05
+  m_SampleCount: 1
+  m_OcclusionIntensity: 0.5
+  m_Blur: 1
+  m_Downsampling: 1
+  m_OcclusionAttenuation: 0.25
+  m_MinZ: 0.01
+  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!114 &11446586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,6 +424,20 @@ MonoBehaviour:
   movementSpeed: 5
   jumpForce: 13.5
   direction: 0
+--- !u!114 &11490238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478a2083ad114a07d000fbfb8d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
+  blurAmount: 0.25
+  extraBlur: 0
 --- !u!124 &12434964
 Behaviour:
   m_ObjectHideFlags: 1

@@ -10,6 +10,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OptionsMenu.unity
   - enabled: 1
+    path: Assets/Scenes/GraphicsOptionsMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/ControlOptionsMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/AudioOptionsMenu.unity
+  - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
   - enabled: 1
     path: Assets/Scenes/Level0.unity

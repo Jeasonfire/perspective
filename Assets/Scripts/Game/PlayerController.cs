@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start () {
         music.volume = Options.MUSIC_VOLUME;
+        perspective.perspectiveCamera.GetComponent<ScreenSpaceAmbientOcclusion>().enabled = Options.SSAO;
+        perspective.perspectiveCamera.GetComponent<MotionBlur>().enabled = Options.MOTION_BLUR;
     }
 
     void Update () {

@@ -8,7 +8,7 @@ public enum OptionType {
 
 public class Button : MonoBehaviour {
     public enum ButtonType {
-        SceneLoader, MouseInvert
+        SceneLoader, MouseInvert, SSAO, MotionBlur
     }
 
     public Camera interactingCamera;
@@ -16,7 +16,7 @@ public class Button : MonoBehaviour {
     public string loadableScene;
 
     public OptionType optionType;
-    public TextMesh mouseInvertText;
+    public TextMesh textMesh;
 
     private bool clicked = false;
 
@@ -26,6 +26,7 @@ public class Button : MonoBehaviour {
         if (interactingCamera == null) {
             interactingCamera = Camera.main;
         }
+        UpdateButtonAlpha();
     }
 
     void Update () {
@@ -41,7 +42,7 @@ public class Button : MonoBehaviour {
                         }
                         break;
                     case ButtonType.MouseInvert:
-                        if (mouseInvertText != null) {
+                        if (textMesh != null) {
                             float value = 0;
                             switch (optionType) {
                                 case OptionType.MouseX:
@@ -54,11 +55,21 @@ public class Button : MonoBehaviour {
                                     break;
                             }
                             if (value < 0) {
-                                mouseInvertText.color = new Color(mouseInvertText.color.r, mouseInvertText.color.g, mouseInvertText.color.b, 1.0f);
+                                textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1.0f);
                             } else {
-                                mouseInvertText.color = new Color(mouseInvertText.color.r, mouseInvertText.color.g, mouseInvertText.color.b, 0.25f);
+                                textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 0.25f);
                             }
                         }
+                        break;
+                    case ButtonType.MotionBlur:
+                        Options.MOTION_BLUR = !Options.MOTION_BLUR;
+                        UpdateButtonAlpha();
+                        break;
+                    case ButtonType.SSAO:
+                        Options.SSAO = !Options.SSAO;
+                        UpdateButtonAlpha();
+                        break;
+                    default:
                         break;
                 }
                 clicked = true;
@@ -66,6 +77,25 @@ public class Button : MonoBehaviour {
         }
         if (!Input.GetMouseButton(0)) {
             clicked = false;
+        }
+    }
+
+    void UpdateButtonAlpha () {
+        switch (buttonType) {
+            case ButtonType.SSAO:
+                if (Options.SSAO) {
+                    textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1.0f);
+                } else {
+                    textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 0.25f);
+                }
+                break;
+            case ButtonType.MotionBlur:
+                if (Options.MOTION_BLUR) {
+                    textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 1.0f);
+                } else {
+                    textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 0.25f);
+                }
+                break;
         }
     }
 }

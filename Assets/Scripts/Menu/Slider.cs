@@ -27,11 +27,11 @@ public class Slider : MonoBehaviour {
         switch (optionType) {
             case OptionType.FXVol:
                 value = Options.FX_VOLUME;
-                valueText.text = (((int) (Options.FX_VOLUME * 100f)) / 100f).ToString();
+                valueText.text = (int) (Options.FX_VOLUME * 100f) + "%";
                 break;
             case OptionType.MusicVol:
                 value = Options.MUSIC_VOLUME;
-                valueText.text = (((int) (Options.MUSIC_VOLUME * 100f)) / 100f).ToString();
+                valueText.text = (int) (Options.MUSIC_VOLUME * 100f) + "%";
                 break;
             case OptionType.MouseX:
                 value = Options.MOUSE_SENSITIVITY.x / Options.MOUSE_MAX_SENSITIVITY.x;
@@ -60,11 +60,11 @@ public class Slider : MonoBehaviour {
             switch (optionType) {
                 case OptionType.FXVol:
                     Options.FX_VOLUME = value;
-                    valueText.text = (((int) (Options.FX_VOLUME * 100f)) / 100f).ToString();
+                    valueText.text = (int) (Options.FX_VOLUME * 100f) + "%";
                     break;
                 case OptionType.MusicVol:
                     Options.MUSIC_VOLUME = value;
-                    valueText.text = (((int) (Options.MUSIC_VOLUME * 100f)) / 100f).ToString();
+                    valueText.text = (int) (Options.MUSIC_VOLUME * 100f) + "%";
                     break;
                 case OptionType.MouseX:
                     Options.MOUSE_SENSITIVITY.x = value * Options.MOUSE_MAX_SENSITIVITY.x;
