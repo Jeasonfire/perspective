@@ -39,7 +39,6 @@ public class PerspectiveController : MonoBehaviour {
             CURRENT_PERSPECTIVE = PERSPECTIVE_2D;
             perspectiveCamera.transform.position = platformerTransform.position;
             perspectiveCamera.transform.eulerAngles = platformerTransform.eulerAngles;
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         } else {

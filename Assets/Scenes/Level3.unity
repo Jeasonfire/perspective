@@ -199,6 +199,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 493572, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
   m_IsPrefabParent: 0
@@ -685,7 +689,7 @@ Prefab:
       objectReference: {fileID: 701183037}
     - target: {fileID: 11413684, guid: f562a1f9cd38f8b44b4c0501f7c63281, type: 2}
       propertyPath: interactionDistance
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f562a1f9cd38f8b44b4c0501f7c63281, type: 2}
@@ -1479,7 +1483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451046, guid: fed701f4976f210488be4149d669760c, type: 2}
       propertyPath: nextLevelName
-      value: MainMenu
+      value: Level4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed701f4976f210488be4149d669760c, type: 2}
@@ -2252,7 +2256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &2022596570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2279,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2022596570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 11.5, z: 0.5}
+  m_LocalPosition: {x: -2.99, y: 11.5, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

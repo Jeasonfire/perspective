@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public CharacterController character;
     public AudioSource music;
     public Transform eye;
+    public TextMesh hudText;
     public float movementSpeed;
     public float jumpForce;
     public float direction = 0;
@@ -22,7 +24,9 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         music.volume = Options.MUSIC_VOLUME;
 
-        /* Get & apply perspective input */
+        if (Input.GetButton("Quit")) {
+            SceneManager.LoadScene("MainMenu");
+        }
         if (Input.GetButton("Change Perspective") && PerspectiveController.CURRENT_PERSPECTIVE != PerspectiveController.TRANSITION) {
             perspective.ChangeState();
         }
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour {
         switch (PerspectiveController.CURRENT_PERSPECTIVE) {
             case PerspectiveController.PERSPECTIVE_2D:
                 movement.x = Input.GetAxis("Horizontal");
+                movement.z = Input.GetAxis("Vertical");
                 this.direction = Mathf.Clamp(this.direction + movement.x * Time.deltaTime, -1, 1);
                 break;
             case PerspectiveController.PERSPECTIVE_3D:
@@ -62,5 +67,16 @@ public class PlayerController : MonoBehaviour {
         /* Apply movement inputs */
         character.Move((movement * movementSpeed + new Vector3(0, currentFallingSpeed, 0)) * Time.deltaTime);
         eye.localEulerAngles = rotation;
+
+        if (PerspectiveController.CURRENT_PERSPECTIVE == PerspectiveController.PERSPECTIVE_3D) {
+            RaycastHit hit;
+            Transform cam = perspective.perspectiveCamera.transform;
+            Physics.Raycast(cam.position, cam.forward, out hit, 2f);
+            if (hit.collider != null) {
+                hudText.text = !hit.collider.tag.Equals("Untagged") ? hit.collider.tag : "";
+            }
+        } else {
+            hudText.text = "";
+        }
     }
 }

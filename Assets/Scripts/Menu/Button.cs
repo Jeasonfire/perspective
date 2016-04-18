@@ -8,7 +8,7 @@ public enum OptionType {
 
 public class Button : MonoBehaviour {
     public enum ButtonType {
-        SceneLoader, MouseInvert, SSAO, MotionBlur
+        SceneLoader, MouseInvert, SSAO, MotionBlur, Quit
     }
 
     public Camera interactingCamera;
@@ -69,7 +69,8 @@ public class Button : MonoBehaviour {
                         Options.SSAO = !Options.SSAO;
                         UpdateButtonAlpha();
                         break;
-                    default:
+                    case ButtonType.Quit:
+                        Application.Quit();
                         break;
                 }
                 clicked = true;

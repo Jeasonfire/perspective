@@ -214,6 +214,10 @@ Prefab:
       propertyPath: m_Name
       value: Level Advancer Door
       objectReference: {fileID: 0}
+    - target: {fileID: 106408, guid: 37b0d5785d34c374dabbf254da29925b, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37b0d5785d34c374dabbf254da29925b, type: 2}
   m_IsPrefabParent: 0
@@ -230,7 +234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487032, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 487032, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
       propertyPath: m_LocalPosition.z
@@ -255,6 +259,14 @@ Prefab:
     - target: {fileID: 487032, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493572, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 493572, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cade9976c9b92b498678e1cabbdcd53, type: 2}
@@ -2101,7 +2113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1993771290
 GameObject:
   m_ObjectHideFlags: 0
